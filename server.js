@@ -10,9 +10,10 @@ app.get('/',(req, res) => {res.send('Hello World')})
 app.get('/weather',(req,res)=> {
   
         let lat=req.query.lat
-        let lan=req.query.lon
+        let lon=req.query.lon
         let searchQuery=req.query.searchQuery
-
+          
+        try{
         let findData=()=>{
           
           let x= dataWe.find((y) => {
@@ -25,6 +26,9 @@ app.get('/weather',(req,res)=> {
         }
 
         res.json(findData())
+        }catch(error){
+          res.status(500).send('smth went wrong Erorr')
+        }
       });
   class ForeCast{
     constructor(weatherData){
