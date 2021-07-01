@@ -4,7 +4,8 @@ const cors = require('cors');
 require('dotenv').config();
 app.use(cors()) 
 const dataWe = require('./data/weather.json')
-
+let PORT=process.env.PORT||8080
+console.log(PORT)
 app.get('/',(req, res) => {res.send('Hello World')})
 
 app.get('/weather',(req,res)=> {
@@ -41,4 +42,4 @@ app.get('/weather',(req,res)=> {
  
 
  
-app.listen(process.env.PORT)
+app.listen(PORT)
